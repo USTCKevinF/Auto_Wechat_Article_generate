@@ -518,6 +518,15 @@ def main():
         ]
     }
 
+    # 新增逻辑：如果没有准备好simple_data，则读取json文件
+    if not simple_data:
+        try:
+            with open('data_example.json', 'r', encoding='utf-8') as f:
+                simple_data = json.load(f)
+            print("已从 data_example.json 读取数据。")
+        except Exception as e:
+            print(f"❌ 无法读取 data_example.json: {e}")
+            return
 
     if simple_data:
         print("正在生成微信公众号文章HTML...")
