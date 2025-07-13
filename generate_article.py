@@ -42,31 +42,24 @@ def generate_topics_summary(topics):
     """生成主题摘要HTML"""
     summary_items = []
     for topic in topics:
-        summary_items.append(f'• {topic}')
-    return '<br>'.join(summary_items)
+        summary_items.append(f'{topic}')
+    return '<br><br>'.join(summary_items)  
 
 
 def generate_section_html(section, data):
     """生成单个章节的HTML"""
+
     section_html = f'''
+                    <section style="margin-top: 8px;outline: 0px;letter-spacing: 0.578px;text-align: right;text-indent: 0em;line-height: 1.6em;">
+                        <span leaf=""><br></span>
+                    </section>
                     <section
                         style="padding-right: 20px;padding-left: 20px;outline: 0px;caret-color: rgba(0, 0, 0, 0.9);font-family: &quot;PingFang SC&quot;, system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;font-size: 17px;letter-spacing: 0.544px;line-height: 0.8;visibility: visible;">
                         <section
-                            style="outline: 0px;letter-spacing: 0.578px;background-color: rgb(255, 255, 255);font-size: 16px;color: rgb(62, 62, 62);text-align: center;text-indent: 0em;line-height: 1.6em;margin-top: 8px;margin-bottom: 24px;">
+                            style="outline: 0px;letter-spacing: 0.578px;background-color: rgb(255, 255, 255);font-size: 16px;color: rgb(62, 62, 62);text-align: center;text-indent: 0em;line-height: 1.6em;margin-top: 8px;margin-bottom: 32px;">
                             <span
                                 style="outline: 0px;font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, sans-serif;orphans: 4;caret-color: rgb(0, 122, 255);white-space-collapse: preserve;color: rgb(44, 42, 143);font-size: 24px;font-weight: 700;text-decoration: underline;letter-spacing: 0.5px;"><span
                                     leaf="">{section['id']} &nbsp;{section['title']}</span></span></section>'''
-    
-    # 如果有副标题，添加副标题部分
-    if section.get('sub_sections'):
-        first_subtitle = section['sub_sections'][0].get('subtitle', '')
-        if first_subtitle:
-            section_html += f'''
-                        <section
-                            style="outline: 0px;letter-spacing: 0.578px;background-color: rgb(255, 255, 255);font-size: 16px;color: rgb(62, 62, 62);text-align: center;text-indent: 0em;line-height: 1.6em;margin-top: 8px;margin-bottom: 24px;">
-                            <span
-                                style="outline: 0px;font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, sans-serif;font-size: 20px;font-weight: 700;letter-spacing: 0.5px;orphans: 4;caret-color: rgb(0, 122, 255);white-space-collapse: preserve;text-indent: 0em;"><span
-                                    leaf="">"{first_subtitle}"</span></span></section>'''
     
     section_html += '''
                     </section>'''
@@ -79,7 +72,31 @@ def generate_section_html(section, data):
     
     # 生成问答内容
     qa_html = ''
-    for sub_section in section['sub_sections']:
+    current_subtitle = None
+    subtitle_count = 0  # 添加副标题计数器
+    
+    for i, sub_section in enumerate(section['sub_sections']):
+        # 检查是否需要显示副标题
+        subtitle = sub_section.get('subtitle', '')
+        if subtitle != current_subtitle:
+            # 新的副标题，需要显示
+            if subtitle:
+                subtitle_count += 1
+                # 如果是第二个及之后的副标题，先添加空行
+                if subtitle_count > 1:
+                    qa_html += '''
+                    <section style="margin-top: 8px;outline: 0px;letter-spacing: 0.578px;text-align: right;text-indent: 0em;line-height: 1.6em;">
+                        <span leaf=""><br></span>
+                    </section>'''
+                
+                qa_html += f'''
+                    <section
+                        style="outline: 0px;letter-spacing: 0.578px;background-color: rgb(255, 255, 255);font-size: 16px;color: rgb(62, 62, 62);text-align: center;text-indent: 0em;line-height: 1.6em;margin-top: 8px;margin-bottom: 24px;">
+                        <span
+                            style="outline: 0px;font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, sans-serif;font-size: 20px;font-weight: 700;letter-spacing: 0.5px;orphans: 4;caret-color: rgb(0, 122, 255);white-space-collapse: preserve;text-indent: 0em;"><span
+                                leaf="">"{subtitle}"</span></span></section>'''
+            current_subtitle = subtitle
+        
         # 问题
         question_html = f'''
                     <section
@@ -247,7 +264,7 @@ def generate_wechat_article_html(data):
                     <span
                         style="outline: 0px;color: rgb(106, 106, 106);letter-spacing: 0.5px;font-size: 15px;visibility: visible;"><span
                             leaf=""
-                            style="visibility: visible;">「对话」是蜗壳进阶联盟推出的系列深度访谈栏目，我们邀请并采访了科大的优秀前辈，他们在科大的大学生活当中走过了弯路，品尝过挫折，获得过成就。我们希望通过深度对话的方式展现他们人生生涯当中的种种历程与个人选择，希望通过这种对话的方式，前辈们的经历可以为科大的后辈们照亮更多的前路。</span></span>
+                            style="visibility: visible;">「对话」是蜗壳进阶联盟推出的系列深度访谈栏目，我们邀请了科大的优秀前辈，讲述他们在求学路上曾经历的挫折与迷茫，以及收获的成长与荣光。通过深度对话，展现他们独特的人生轨迹与关键抉择，希望这些经验能为后来的科大学子提供切实的参考与支持。</span></span>
                 </section>
                 <section
                     style="margin-top: 8px;outline: 0px;letter-spacing: normal;white-space-collapse: preserve;orphans: 4;caret-color: rgb(0, 122, 255);font-family: &quot;Open Sans&quot;, &quot;Clear Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Segoe UI Emoji&quot;, sans-serif;text-align: start;text-indent: 0em;line-height: 1.75em;visibility: visible;margin-bottom: 24px;">
