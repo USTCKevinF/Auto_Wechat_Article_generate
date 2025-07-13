@@ -361,15 +361,15 @@ def generate_wechat_article_html(data):
                             style="outline: 0px;color: rgb(171, 25, 66);background-color: rgb(255, 255, 255);"><span
                                 leaf=""><img
                                     data-src="https://mmbiz.qpic.cn/mmbiz_jpg/twW3euR3BMJaBWaicHQq4icagaiageoklRIx6gcXphTa66cohxibYDMvuWfJArLV6HTFoKT4Aibqia0QcnZbnqhaHF5g/640?wx_fmt=jpeg"
-                                    class="rich_pages wxw-img js_img_placeholder wx_img_placeholder"
+                                    class="rich_pages wxw-img"
                                     data-ratio="0.44722222222222224" data-s="300,640" data-type="png" data-w="1080"
-                                    style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-weight: 400; letter-spacing: normal; text-align: start; white-space-collapse: collapse; outline: 0px; visibility: visible !important; width: 579px !important; height: 258.942px !important;"
+                                    style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-weight: 400; letter-spacing: normal; text-align: start; white-space-collapse: collapse; outline: 0px; width: 579px !important; visibility: visible !important; height: auto !important;"
                                     data-croporisrc="https://mmbiz.qpic.cn/mmbiz_png/twW3euR3BMIMkk15K4JCJKHQWSxSeEqicOju9uRCAvQ8C9aMibgKt4VE48VDHMTYjhoOOM4ciaMOLzDCZyEsytSjg/640?wx_fmt=other&amp;from=appmsg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
                                     data-cropx2="1080" data-cropy2="483.1088082901554" data-imgfileid="100000983"
                                     data-original-style="caret-color: rgb(0, 0, 0);color: rgb(0, 0, 0);font-weight: 400;letter-spacing: normal;text-align: start;white-space-collapse: collapse;outline: 0px;width: 579px;visibility: visible !important;height: auto !important;"
                                     data-index="7"
-                                    src="data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1px' height='1px' viewBox='0 0 1 1' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3E%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' fill-opacity='0'%3E%3Cg transform='translate(-249.000000, -126.000000)' fill='%23FFFFFF'%3E%3Crect x='249' y='126' width='1' height='1'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E"
-                                    _width="579px" alt="Image"></span></strong></span></p>
+                                    src="https://mmbiz.qpic.cn/mmbiz_jpg/twW3euR3BMJaBWaicHQq4icagaiageoklRIx6gcXphTa66cohxibYDMvuWfJArLV6HTFoKT4Aibqia0QcnZbnqhaHF5g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1"
+                                    _width="579px" alt="Image" data-report-img-idx="6" data-fail="0"></span></strong></span></p>
                 <p><span leaf=""><br></span></p>
             </section>
         </section>
