@@ -40,10 +40,10 @@ def format_guest_intro(intro_text):
 
 def generate_topics_summary(topics):
     """生成主题摘要HTML"""
-    summary_items = []
+    summary_sections = []
     for topic in topics:
-        summary_items.append(f'{topic}')
-    return '<br><br>'.join(summary_items)  
+        summary_sections.append(f'''<section style="margin-bottom: 16px;outline: 0px;font-family: &quot;PingFang SC&quot;, system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;text-indent: 0em;letter-spacing: 0.578px;background-color: rgb(255, 255, 255);color: rgb(62, 62, 62);text-align: center;line-height: 1.6em;margin-top: 8px;"><span leaf=""><span textstyle="" style="font-weight: bold;">{topic}</span></span></section>''')
+    return ''.join(summary_sections)
 
 
 def generate_section_html(section, data):
@@ -311,9 +311,7 @@ def generate_wechat_article_html(data):
             <p
                 style="margin-bottom: 8px;outline: 0px;font-family: &quot;PingFang SC&quot;, system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;text-indent: 0em;letter-spacing: 0.578px;background-color: rgb(255, 255, 255);color: rgb(62, 62, 62);text-align: center;line-height: 1.6em;margin-top: 8px;">
                 <span leaf=""><br></span></p>
-            <section
-                style="margin-bottom: 16px;outline: 0px;font-family: &quot;PingFang SC&quot;, system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;text-indent: 0em;letter-spacing: 0.578px;background-color: rgb(255, 255, 255);color: rgb(62, 62, 62);text-align: center;line-height: 1.6em;margin-top: 8px;">
-                <span leaf=""><span textstyle="" style="font-weight: bold;">{topics_summary}</span></span></section>
+            {topics_summary}
             <p
                 style="margin-top: 8px;margin-bottom: 16px;outline: 0px;font-family: &quot;PingFang SC&quot;, system-ui, -apple-system, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;text-indent: 0em;letter-spacing: 0.578px;background-color: rgb(255, 255, 255);color: rgb(62, 62, 62);text-align: center;line-height: 1.6em;">
                 <strong style="outline: 0px;"><span leaf="">...</span></strong></p>
